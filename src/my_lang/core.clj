@@ -1,16 +1,7 @@
 (ns my-lang.core
-  (:require [instaparse.core :as insta]))
+  (:require [instaparse.core :as insta :refer :all]))
 
-(def calculator-parser
-  (insta/parser
-    "exp = sum-sub
-<sum-sub> = sum | sub | mul | div
-mul = num <'*'> num
-div = num <'/'> num
-sum = num <'+'> num
-sub = num <'-'> num
-number = #'[0-9]+'
-<num> = number | sum-sub"))
+(defparser calculator-parser (clojure.java.io/resource "myparser.bnf"))
 
 (->> (calculator-parser "1+2+3")
      (insta/transform

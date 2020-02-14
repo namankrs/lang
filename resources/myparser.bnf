@@ -1,0 +1,8 @@
+exp = sum-sub
+<sum-sub> = sum | sub | mul | div
+mul = term <'*'> term
+div = term <'/'> term
+sum = term <'+'> term
+sub = term <'-'> term
+number = #'[0-9]+'
+<term> = number | sum-sub
