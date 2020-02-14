@@ -1,8 +1,8 @@
-exp = sum-sub
-<sum-sub> = sum | sub | mul | div
+exp = operations
+<operations> = sum | sub | mul | div
 mul = term <'*'> term
 div = term <'/'> term
 sum = term <'+'> term
 sub = term <'-'> term
 number = #'\s*[0-9]+\s*'
-<term> = number | sum-sub
+<term> = number | <#'\s*' '('> operations <')' #'\s*'> | operations
