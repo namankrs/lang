@@ -5,4 +5,5 @@
             :url "https://www.eclipse.org/legal/epl-2.0/"}
   :dependencies [[org.clojure/clojure "1.10.0"]
                  [instaparse "1.4.10"]]
-  :repl-options {:init-ns my-lang.core})
+  :repl-options {:init-ns my-lang.core}
+  :main my-lang.core)
