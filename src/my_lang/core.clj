@@ -3,13 +3,15 @@
 
 (defparser calculator-parser (clojure.java.io/resource "myparser.bnf"))
 
-(defn transformer []
-  (->> (calculator-parser "3*3+3")
+(defn transformer [exp]
+  (->> (calculator-parser exp)
        (insta/transform
-         {:sum    +, :sub -, :mul *, :div /, :exp identity,
+         {:add +, :sub -, :mul *, :div /, :exp identity,
           :number clojure.edn/read-string})))
 
-(defn -main []
-  (println (transformer)))
+(calculator-parser "")
+(transformer "2*2")
+;(defn -main []
+;  (println (transformer)))
 
 
