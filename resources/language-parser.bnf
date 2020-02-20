@@ -1,0 +1,7 @@
+exp = statements
+<statements> = statement*
+<statement> = assignment <linebreak> | assignment
+assignment = variable <'='> value 
+<linebreak> = '\r' | '\n' | '\n\r'
+value = #'[0-9]'
+variable = #'[a-z]'
