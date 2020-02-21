@@ -18,12 +18,14 @@
        (insta/transform
         {:assignment (partial intern 'my-lang.core)
          :exp vector
-         :value clojure.edn/read-string
-         :variable clojure.edn/read-string})))
+         :add +, :sub -, :mul *, :div /
+         :number clojure.edn/read-string
+         :variable clojure.edn/read-string
+         :defined-var (comp eval clojure.edn/read-string )})))
 
 (calculator "2*2")
-(language-parser "x=4\ny=3")
-(language "x=4\ny=3\nz=4")
+(language-parser "x=4\ny=3\nx+y")
+(language "x=4\ny=3\nx+y")
 
 (defn -main []
   (do []

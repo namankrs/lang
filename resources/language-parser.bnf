@@ -1,6 +1,19 @@
-exp = statement*
+exp = statement* calc-exp*
 <statement> = assignment <linebreak> | assignment
-assignment = variable <'='> value
+assignment = variable <'='> number
+<calc-exp> = operations
+<operations> =  div | mul | add-sub
+div = term <'/'> mul-add
+<mul-add> = mul | add-sub
+<add-sub> = add | sub-term
+<sub-term> = sub | term
+<term> = number | defined-var | operations
+
+mul = term <'*'> add-sub
+add = term <'+'> sub-term
+sub = term <'-'> term
+
+number = #'[0-9]+'
+variable = #'[a-z]+'
+defined-var = #'[a-z]+'
 <linebreak> = '\r' | '\n' | '\n\r'
-value = #'[0-9]'
-variable = #'[a-z]'
