@@ -16,16 +16,21 @@
 (defn language [exp]
   (->> (language-parser exp)
        (insta/transform
-        {:assignment (partial intern 'my-lang.core)
+        {
          :exp vector
-         :add +, :sub -, :mul *, :div /
-         :number clojure.edn/read-string
+         :function (partial intern 'my-lang.core)
+         ;:function-body (conj clojure.core/fn vector)
+         :arguments vector
+         :assignment (partial intern 'my-lang.core)
+         :defined-var (comp eval clojure.edn/read-string )
          :variable clojure.edn/read-string
-         :defined-var (comp eval clojure.edn/read-string )})))
+         :number clojure.edn/read-string
+         :add +, :sub -, :mul *, :div /
+         })))
 
-(calculator "2*2")
-(language-parser "x=4\ny=3\nx+y\ny+2")
-(language "x=4\ny=3\nx+y\ny+2")
+;(calculator "2*2")
+;(language-parser "x a b c=a+b+c")
+;(language "x=4\ny=3\nx+y\ny+2")
 
 (defn repl []
   (ns my-lang.core)
