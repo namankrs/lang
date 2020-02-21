@@ -1,6 +1,9 @@
-exp = statement* calc-exp*
-<statement> = assignment <linebreak> | assignment
+exp = statements*
+<statements> = statement <linebreak> | statement
+<statement> = assignment | calc-exp
+
 assignment = variable <'='> number
+
 <calc-exp> = operations
 <operations> =  div | mul | add-sub
 div = term <'/'> mul-add
