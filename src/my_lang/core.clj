@@ -17,13 +17,13 @@
   (->> (language-parser exp)
        (insta/transform
         {:assignment (partial intern 'my-lang.core)
-         :exp identity
+         :exp vector
          :value clojure.edn/read-string
          :variable clojure.edn/read-string})))
 
 (calculator "2*2")
-(language-parser "x=4")
-(language "x=4")
+(language-parser "x=4\ny=3")
+(language "x=4\ny=3\nz=4")
 
 (defn -main []
   (do []
