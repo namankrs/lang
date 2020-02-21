@@ -1,5 +1,4 @@
-exp = statements
-<statements> = statement*
+exp = statement*
 <statement> = assignment <linebreak> | assignment
 assignment = variable <'='> value 
 <linebreak> = '\r' | '\n' | '\n\r'
